@@ -1,0 +1,133 @@
+$primaryColor: rgb(72, 158, 126);
+$secondaryColor: rgb(255, 255, 255);
+$contrastColor: rgb(64, 64, 64);
+
+@mixin standardItem{
+    background-color: transparent;
+    color: $secondaryColor;
+}
+
+@mixin mainText{
+    color: $secondaryColor;
+    font-size: 2rem;
+}
+
+@mixin smallScreen{
+    @media (max-width: 600px) {
+        @content
+    };
+}
+
+
+
+
+html{
+    background-color: $contrastColor;
+    color: $secondaryColor;
+
+    body{
+        @include standardItem;
+    };
+    
+}
+
+.icon{
+    width: 5rem;
+}
+
+
+
+header{
+    background-color: $primaryColor;
+    div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    @include smallScreen {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    a{
+        box-sizing: border-box;
+    }
+
+    h1{
+        @include smallScreen {
+            font-size: 0;
+        }
+    }
+
+    .btn{
+        @include standardItem;
+        border: none;
+    }
+    }
+}
+
+main{
+    .news{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+
+        .card{
+            @include standardItem;
+            border: none;
+        }
+
+        @include smallScreen {
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .accordion{
+        .accordion-item{
+            @include standardItem;
+            h2{
+                .accordion-button{
+                    @include standardItem;
+                }
+            }
+        }
+    }
+
+    .container{
+        display: flex;
+        flex-direction: column ;
+        align-items: center;
+
+        h2{
+            padding: 2rem;
+        }
+
+        .carousel-inner{
+            width: 25rem;
+            height: 25rem;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}
+
+footer{
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+    @include smallScreen {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
